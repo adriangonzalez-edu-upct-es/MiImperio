@@ -42,7 +42,7 @@ class Repuesto:
             raise ValueError("El nuevo precio debe ser un número no negativo")
         self.precio = nuevo_precio
 
-    # Mostrammos información del repuesto con con un print()
+    # Mostramos información del repuesto con con un print()
     def __str__(self):
         return (f"Repuesto '{self.nombre}' del proveedor '{self.proovedor}' "
                 f"con cantidad {self._cantidad} y precio {self.precio}")
@@ -61,6 +61,7 @@ class OperarioAlmacen:
             raise ValueError("El almacén debe ser una instancia de Almacen")
         # Utilizamos el metodo de añadir_repuesto implementado en la clase almacen
         almacen.añadir_repuesto(repuesto, self)
+        print(f"El operario '{self.nombre}' ha añadido el repuesto '{repuesto.nombre}' al almacén '{almacen.id_nombre}'")
 
     def retirar_repuesto(self, repuesto: Repuesto, almacen: Almacen):
         """Elimina completamente un repuesto del catálogo."""
@@ -70,6 +71,7 @@ class OperarioAlmacen:
             raise ValueError("El almacén debe ser una instancia de Almacen")
         # Utilizamos el metodo de eliminar_repuesto implementado en la clase almacen
         almacen.eliminar_repuesto(repuesto, self)
+        print(f"El operario '{self.nombre}' ha retirado el repuesto '{repuesto.nombre}' del almacén '{almacen.id_nombre}'")
 
     def buscar_repuesto(self, repuesto_nom: str, almacen: Almacen):
         if not isinstance(repuesto_nom, str) or not repuesto_nom.strip():
@@ -91,7 +93,7 @@ class OperarioAlmacen:
             raise ValueError("El nuevo precio debe ser un número positivo")
         if not isinstance(almacen, Almacen):
             raise ValueError("El almacén debe ser una instancia de Almacen")
-        # actualizamos el precio del repuseto con un metodo de la clase almacén
+        # actualizamos el precio del repuesto con un metodo de la clase almacén
         almacen.actualizar_precio_repuesto(repuesto_nom, nuevo_precio, self)
 
     def reponer_repuesto(self, repuesto_nom: str, cantidad: int, almacen: Almacen):
@@ -155,8 +157,8 @@ class Almacen:
 
         self.id_nombre = id_nombre
         self.localizacion = localizacion
-        # Utilizamos un diccionario par acceder por string
-        self.catalogo_piezas: dict[str, Repuesto] = {}  # nombre → Repuesto
+        # Utilizamos un diccionario para acceder por string
+        self.catalogo_piezas: dict[str, Repuesto] = {}  # nombre : Repuesto
         self.operarios: list[OperarioAlmacen] = []
         self.comandantes: list[Comandante] = []
 

@@ -50,42 +50,52 @@ def main():
 
     almacen1.mostrar_repuestos()
 
+    print("- " * 20)
     # Probamos los metodos de operadores y comandantes con manejo de excepciones
     try:
         comandante3.adquirir_repuesto("Motor", 2, almacen1)
     except Exception as e:
         print(f"Error: {e}")
-
+    
+    print("- " * 20)
     try: 
         comandante2.consultar_repuesto("Ala", almacen1)
     except Exception as e:
         print(f"Error: {e}")
-        
+    
+    print("- " * 20)
     try:
         operario1.buscar_repuesto("Ala", almacen1)
     except Exception as e:
         print(f"Error: {e}")
 
+    print("- " * 20)
     try:
         print("Precio del Cañón antes de cambiarlo:")
-        print(operario1.buscar_repuesto("Cañón", almacen1))
+        operario1.buscar_repuesto("Cañón", almacen1)
         operario1.cambiar_precio_repuesto("Cañón", 2500.0, almacen1)
+        print("Precio del Cañón después de cambiarlo:")
+        operario1.buscar_repuesto("Cañón", almacen1)
     except Exception as e:
         print(f"Error: {e}")
 
+    print("- " * 20)
     try:
-        operario1.retirar_repuesto("Ala", almacen1)
+        operario1.retirar_repuesto(repuesto2, almacen1)
     except Exception as e:
         print(f"Error: {e}")
-        
+    
+    print("- " * 20)
     try:
-        print("Repuestas antes de reponer:")
+        print("Repuestos antes de reponer:")
         operario1.buscar_repuesto("Motor", almacen1)
-        print("Reponiendo Motor...")
+        print("Repuestos después de reponer:")
         operario1.reponer_repuesto("Motor", 12, almacen1)
         operario1.buscar_repuesto("Motor", almacen1)
     except Exception as e:
         print(f"Error: {e}")
+
+        
 if __name__ == "__main__":
     main()
 

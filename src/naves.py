@@ -22,7 +22,7 @@ class UnidadCombateImperial(ABC):
                 {mensaje} con clave {self.clave}"""
 
     @abstractmethod
-    # Tados la naves tiene que implementar el metodo __str__ para mostrar su información
+    # Todos los vehiculos tiene que implementar el metodo __str__ para mostrar su información
     def __str__(self):
         pass
 
@@ -40,7 +40,7 @@ class Nave(UnidadCombateImperial, ABC):
 
         self.nombre = nombre
         self.piezas = piezas
-        self.comandante = None # Comandante se asigna luego
+        self.comandante = None # Lo asignamos luego al crear al comandante
 
     def consultar_piezas(self):
         return f"Nave {self.nombre} tiene las siguientes piezas: {', '.join(self.piezas)}"
@@ -106,10 +106,6 @@ class NaveEstelar(Nave):
                 con tripulación de {self.tripulacion} y pasaje de {self.pasaje}"""
 
 class CazaEstelar(Nave):
-    """
-    Clase que representa una nave estelar en la empresa Imperio Galactico.
-    Hereda de la clase abstracta Nave.
-    """
     def __init__(self, nombre:str, repuestos:list, dotacion:int):
 
         if not isinstance(dotacion, int) or dotacion < 0:
